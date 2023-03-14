@@ -1,0 +1,121 @@
+.product-single-view-page {
+  height: 100vh;
+  width: 100%;
+}
+
+.product-single-view-logo {
+  padding: 20px 30px;
+}
+
+.product-single-view-main {
+  height: 100%;
+  width: 100%;
+  background-color: #fff;
+}
+
+.product-single-view-container {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+  padding: 30px 40px;
+}
+
+.product-single-view-title {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 40px;
+}
+
+.product-single-view-product-name {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 500;
+  font-size: 32px;
+  line-height: 39px;
+  text-align: center;
+  color: black;
+}
+
+.product-single-view-image {
+  height: 100%;
+  max-width: 100%
+}
+
+.product-single-view-product-info {
+  width: 100%;
+  display: flex;
+  margin-top: 34px;
+  gap: 174px;
+}
+
+.product-single-view-available {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  margin-bottom: 26px;
+}
+
+.product-single-view-available-info {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 500;
+  font-size: 36px;
+  line-height: 44px;
+  text-align: center;
+  color: #3CD78C;
+}
+
+.product-single-view-available-price {
+  display: inline-block;
+  margin-bottom: 26px;
+  margin-left: 36px;
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 500;
+  font-size: 36px;
+  line-height: 44px;
+  text-align: center;
+  color: #FC5B00;
+}
+
+.product-single-view-available-quantity {
+  margin-left: 36px;
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 500;
+  font-size: 24px;
+  line-height: 29px;
+  margin-bottom: 40px;
+}
+
+.product-single-view-description {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  margin-top: 72px;
+}
+
+.product-single-view-description-title {
+  margin-bottom: 46px;
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 500;
+  font-size: 32px;
+  line-height: 39px;
+  text-align: center;
+}
+
+.product-single-view-description-title span {
+  margin-left: 24px;
+  color: #D9D9D9;
+}
+
+.product-single-view-first-line-description {
+  margin-bottom: 28px;
+}
+
+.product-single-view-second-line-description {
+  margin-bottom: 28px;
+}

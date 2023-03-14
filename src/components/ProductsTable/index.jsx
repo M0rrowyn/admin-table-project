@@ -15,6 +15,7 @@ import ProductModal from "../../components/ProductModal";
 import AdminTableButton from "../AdminTableButton";
 import UserIcon from "../../assets/images/admin-table/user.svg";
 import PlusIcon from "../../assets/images/admin-table/plus.svg";
+import { Link } from "react-router-dom";
 
 function createData(id, category, name, quantity, price) {
   return { id, category, name, quantity, price };
@@ -40,10 +41,12 @@ const ProductsTable = () => {
   return (
     <div>
       <div className="admin-header-button-container">
+        <Link to="/product-preview">
         <AdminTableButton
           text="Preview"
           image={<img src={UserIcon} className="user-icon" alt="User"></img>}
         />
+        </Link>
         <AdminTableButton
           text="Add product"
           image={<img src={PlusIcon} alt="User"></img>}

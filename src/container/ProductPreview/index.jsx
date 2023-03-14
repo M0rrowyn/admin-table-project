@@ -5,19 +5,22 @@ import Notebook from "../../assets/images/products-preview/lenovo-laptop-y50.png
 import SportPants from "../../assets/images/products-preview/sport-pants.jpg";
 import Bath from "../../assets/images/products-preview/bath.jpg";
 import ProductPreviewCard from "../../components/ProductPreviewCard";
+import { Link } from "react-router-dom";
 
 const ProductsPreview = () => {
   return (
     <section className="product-preview-page">
       <img src={LogoIcon} className="product-preview-logo" alt="Logo"></img>
       <div className="product-preview-card">
-        <ProductPreviewCard
-          className="product-preview-card-item"
-          image={Notebook}
-          title="Ноутбук Lenovo Y50-70 Aluminum Black"
-          price="25000₴"
-          quantity="Кількість: 5"
-        />
+        <Link to=":id">
+          <ProductPreviewCard
+            className="product-preview-card-item"
+            image={Notebook}
+            title="Ноутбук Lenovo Y50-70 Aluminum Black"
+            price="25000₴"
+            quantity="Кількість: 5"
+          />
+        </Link>
         <ProductPreviewCard
           className="product-preview-card-item"
           image={SportPants}
