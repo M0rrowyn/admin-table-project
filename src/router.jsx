@@ -5,18 +5,16 @@ import ProductPreview from "./container/ProductPreview";
 import PageNotFound from "./container/PageNotFound";
 import ProductSingleView from "./components/ProductSingleView";
 
-const AppRouter = () => {
-  return (
-    <BrowserRouter>
-      <Routes>
-        <Route path="/login" element={<LoginPage />} />
-        <Route path="/admin-table" element={<AdminTable />} />
-        <Route path="/product-preview" element={<ProductPreview />} />
-        <Route path="/product-preview/:id" element={<ProductSingleView />} />
-        <Route path="*" element={<PageNotFound />} />
-      </Routes>
-    </BrowserRouter>
-  );
-};
+const AppRouter = () => (
+  <BrowserRouter>
+    <Routes>
+      <Route path="/login" element={<LoginPage />} />
+      <Route path="/admin-table" element={<AdminTable />} />
+      <Route path="/product-preview" element={<ProductPreview />} />
+      <Route path="/product-preview/:id" element={<ProductSingleView />} />
+      <Route path="*" element={<PageNotFound />} />
+    </Routes>
+  </BrowserRouter>
+);
 
 export default AppRouter;

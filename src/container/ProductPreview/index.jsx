@@ -21,41 +21,51 @@ const ProductsPreview = () => {
             quantity="Кількість: 5"
           />
         </Link>
-        <ProductPreviewCard
-          className="product-preview-card-item"
-          image={SportPants}
-          title="Nike M Nk Df Acd21"
-          price="4000₴"
-          quantity="Кількість: 22"
-        />
-        <ProductPreviewCard
-          className="product-preview-card-item"
-          image={Bath}
-          title="CERSANIT MITO 17"
-          price="5000₴"
-          quantity="Кількість: 1337"
-        />
-        <ProductPreviewCard
-          className="product-preview-card-item"
-          image={Notebook}
-          title="Ноутбук Lenovo Y50-70 Aluminum Black"
-          price="25000₴"
-          quantity="Кількість: 5"
-        />
-        <ProductPreviewCard
-          className="product-preview-card-item"
-          image={SportPants}
-          title="Nike M Nk Df Acd21"
-          price="4000₴"
-          quantity="Кількість: 22"
-        />
-        <ProductPreviewCard
-          className="product-preview-card-item"
-          image={Bath}
-          title="CERSANIT MITO 17"
-          price="5000₴"
-          quantity="Кількість: 1337"
-        />
+        <Link to=":id">
+          <ProductPreviewCard
+            className="product-preview-card-item"
+            image={SportPants}
+            title="Nike M Nk Df Acd21"
+            price="4000₴"
+            quantity="Кількість: 22"
+          />
+        </Link>
+        <Link to=":id">
+          <ProductPreviewCard
+            className="product-preview-card-item"
+            image={Bath}
+            title="CERSANIT MITO 17"
+            price="5000₴"
+            quantity="Кількість: 1337"
+          />
+        </Link>
+        <Link to=":id">
+          <ProductPreviewCard
+            className="product-preview-card-item"
+            image={Notebook}
+            title="Ноутбук Lenovo Y50-70 Aluminum Black"
+            price="25000₴"
+            quantity="Кількість: 5"
+          />
+        </Link>
+        <Link to=":id">
+          <ProductPreviewCard
+            className="product-preview-card-item"
+            image={SportPants}
+            title="Nike M Nk Df Acd21"
+            price="4000₴"
+            quantity="Кількість: 22"
+          />
+        </Link>
+        <Link to=":id">
+          <ProductPreviewCard
+            className="product-preview-card-item"
+            image={Bath}
+            title="CERSANIT MITO 17"
+            price="5000₴"
+            quantity="Кількість: 1337"
+          />
+        </Link>
       </div>
     </section>
   );
