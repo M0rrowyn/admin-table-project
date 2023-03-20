@@ -1,7 +1,7 @@
 import React from "react";
 import "./style.css";
 
-const LoginFormInput = ({ classes, type, placeholder}) => {
+const LoginFormInput = ({ classes, type = "text", placeholder = "default" }) => {
   let className = "login-form-input";
   if (classes) {
     className += ` ${classes}`;
@@ -9,9 +9,9 @@ const LoginFormInput = ({ classes, type, placeholder}) => {
 
   const Input = (
     <input
-      type={type || "text"}
+      type={type}
       className={className}
-      placeholder={placeholder || "default"}
+      placeholder={placeholder}
     />
   );
 
