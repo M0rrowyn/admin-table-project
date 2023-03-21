@@ -1,16 +1,39 @@
-import React from "react";
+import React, { useState } from "react";
 import "./style.css";
+import axios from "axios";
+import { useNavigate } from "react-router-dom";
 import LogoIcon from "../../assets/images/logo/login-icon.svg";
 import LoginFormInput from "../LoginFormInput";
 import LoginFormPassword from "../LoginFormPassword";
 
 const LoginForm = () => {
+  const [login, setLogin] = useState('');
+  const [password, setPassword] = useState('');
+
+  const navigate = useNavigate();
+
+  const onClick = (login, password) => {
+    axios
+      .post("http://localhost:3000/login", { login, password })
+      .then((response) => {
+        const token = response.data.token;
+        const user = response.data.user;
+  
+        localStorage.setItem("token", token);
+        localStorage.setItem("user", JSON.stringify(user));
+  
+        return navigate("/admin-table")
+      });
+  };
+
   const Form = (
-    <form className="login-form">
+    <form className="login-form" onSubmit={(event) => event.preventDefault()}>
       <img src={LogoIcon} className="login-form-logo" alt="Logo"></img>
-      <LoginFormInput placeholder="User Name" />
-      <LoginFormPassword placeholder="Password" />
-      <button className="login-form-button">Login</button>
+      <LoginFormInput placeholder="User Name" onChange={(event) => setLogin(event.target.value)} />
+      <LoginFormPassword placeholder="Password" onChange={(event) => setPassword(event.target.value)}/>
+      <button className="login-form-button" onClick={() => onClick(login, password)}>
+        Login
+      </button>
     </form>
   );
 

@@ -1,7 +1,7 @@
 import React from "react";
 import "./style.css";
 
-const LoginFormInput = ({ classes, type = "text", placeholder = "default" }) => {
+const LoginFormInput = ({ classes, type = "text", placeholder = "default", onChange }) => {
   let className = "login-form-input";
   if (classes) {
     className += ` ${classes}`;
@@ -12,6 +12,7 @@ const LoginFormInput = ({ classes, type = "text", placeholder = "default" }) => 
       type={type}
       className={className}
       placeholder={placeholder}
+      onChange={onChange}
     />
   );
 

@@ -3,7 +3,7 @@ import "./style.css";
 import { BsEyeSlashFill, BsEye } from "react-icons/bs";
 import LoginFormInput from "../LoginFormInput";
 
-const LoginFormPassword = ({ placeholder }) => {
+const LoginFormPassword = ({ placeholder, onChange }) => {
   const [isPasswordOpen, setPasswordOpen] = useState(false);
   const togglePasswordOpen = () => setPasswordOpen(!isPasswordOpen);
 
@@ -13,6 +13,7 @@ const LoginFormPassword = ({ placeholder }) => {
         classes="form-password"
         type={isPasswordOpen ? "text" : "password"}
         placeholder={placeholder}
+        onChange={onChange}
       />
       {isPasswordOpen ? (
         <BsEye onClick={togglePasswordOpen} className="password-eye" />
