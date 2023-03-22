@@ -7,31 +7,44 @@ import LoginFormInput from "../LoginFormInput";
 import LoginFormPassword from "../LoginFormPassword";
 
 const LoginForm = () => {
-  const [login, setLogin] = useState('');
-  const [password, setPassword] = useState('');
+  const [login, setLogin] = useState("");
+  const [password, setPassword] = useState("");
 
   const navigate = useNavigate();
 
-  const onClick = (login, password) => {
-    axios
-      .post("http://localhost:3000/login", { login, password })
-      .then((response) => {
-        const token = response.data.token;
-        const user = response.data.user;
-  
-        localStorage.setItem("token", token);
-        localStorage.setItem("user", JSON.stringify(user));
-  
-        return navigate("/admin-table")
+  const onClick = async (login, password) => {
+    try {
+      const response = await axios.post("http://localhost:3000/login", {
+        login,
+        password,
       });
+      const token = response.data.token;
+      const user = response.data.user;
+
+      localStorage.setItem("token", token);
+      localStorage.setItem("user", JSON.stringify(user));
+
+      return navigate("/admin-table");
+    } catch (error) {
+      console.error(error);
+    }
   };
 
   const Form = (
     <form className="login-form" onSubmit={(event) => event.preventDefault()}>
       <img src={LogoIcon} className="login-form-logo" alt="Logo"></img>
-      <LoginFormInput placeholder="User Name" onChange={(event) => setLogin(event.target.value)} />
-      <LoginFormPassword placeholder="Password" onChange={(event) => setPassword(event.target.value)}/>
-      <button className="login-form-button" onClick={() => onClick(login, password)}>
+      <LoginFormInput
+        placeholder="User Name"
+        onChange={(event) => setLogin(event.target.value)}
+      />
+      <LoginFormPassword
+        placeholder="Password"
+        onChange={(event) => setPassword(event.target.value)}
+      />
+      <button
+        className="login-form-button"
+        onClick={() => onClick(login, password)}
+      >
         Login
       </button>
     </form>
