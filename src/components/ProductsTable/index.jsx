@@ -1,5 +1,6 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./style.css";
+import axios from "axios";
 import Table from "@mui/material/Table";
 import TableBody from "@mui/material/TableBody";
 import TableCell from "@mui/material/TableCell";
@@ -17,20 +18,24 @@ import UserIcon from "../../assets/images/admin-table/user.svg";
 import PlusIcon from "../../assets/images/admin-table/plus.svg";
 import { Link } from "react-router-dom";
 
-function createData(id, category, name, quantity, price) {
-  return { id, category, name, quantity, price };
-}
-
-const rows = [
-  createData(0, "PC", "Lenovo Y50-70", 5, "25,000.00"),
-  createData(1, "Clothes", "Nike M Nk Df Acd21", 22, "4,000.00"),
-  createData(2, "Plumbing", "CERSANIT MITO 17", 1337, "5,000.00"),
-];
-
 const ProductsTable = () => {
   const [isProductModalOpen, setIsProductModalOpen] = useState(false);
   const [isDeleteModalOpen, setisDeleteModalOpen] = useState(false);
   const [currentProduct, setCurrentProduct] = useState(null);
+  const [products, setProducts] = useState([]);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await axios.get("http://localhost:3000/product");
+        setProducts(response.data);
+      } catch (error) {
+        console.log(error);
+      }
+    };
+
+    fetchData();
+  }, []);
 
   const SortButton = (
     <button className="products-table-sort-button">
@@ -42,10 +47,10 @@ const ProductsTable = () => {
     <div>
       <div className="admin-header-button-container">
         <Link to="/product-preview">
-        <AdminTableButton
-          text="Preview"
-          image={<img src={UserIcon} className="user-icon" alt="User"></img>}
-        />
+          <AdminTableButton
+            text="Preview"
+            image={<img src={UserIcon} className="user-icon" alt="User"></img>}
+          />
         </Link>
         <AdminTableButton
           text="Add product"
@@ -96,23 +101,23 @@ const ProductsTable = () => {
               </TableRow>
             </TableHead>
             <TableBody>
-              {rows.map((row) => (
+              {products.map((product) => (
                 <TableRow
-                  key={row.id}
+                  key={product.id}
                   sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
                 >
                   <TableCell component="th" scope="row">
-                    {row.id}
+                    {product.id}
                   </TableCell>
-                  <TableCell>{row.category}</TableCell>
-                  <TableCell>{row.name}</TableCell>
-                  <TableCell>{row.quantity}</TableCell>
-                  <TableCell>{row.price}</TableCell>
+                  <TableCell>{product.category}</TableCell>
+                  <TableCell>{product.name}</TableCell>
+                  <TableCell>{product.quantity}</TableCell>
+                  <TableCell>{product.price}</TableCell>
                   <TableCell>
                     <button
                       className="product-table-cell-button"
                       onClick={() => {
-                        setCurrentProduct(row);
+                        setCurrentProduct(product);
                         setIsProductModalOpen(true);
                       }}
                     >
