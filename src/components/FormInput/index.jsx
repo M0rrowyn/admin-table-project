@@ -1,13 +1,18 @@
 import React from "react";
 import "./style.css";
 
-const FormInput = ({label, type, value}) => {
+const FormInput = ({ label, type, value, onChange }) => {
   return (
     <div>
       <label className="form-input-label" htmlFor="">
         {label}
       </label>
-      <input className="form-input" type={type} value={value} />
+      <input
+        className="form-input"
+        type={type}
+        defaultValue={value}
+        onChange={onChange}
+      />
     </div>
   );
 };

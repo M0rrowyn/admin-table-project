@@ -8,7 +8,7 @@ import {
   Button,
 } from "@mui/material";
 
-const ConfirmNotification = ({ isOpen, setIsOpen }) => {
+const ConfirmNotification = ({ isOpen, setIsOpen, onDelete }) => {
   return (
     <Dialog
       className="confirm-notification-background"
@@ -21,10 +21,18 @@ const ConfirmNotification = ({ isOpen, setIsOpen }) => {
         </Typography>
       </DialogContent>
       <DialogActions>
-        <Button className="confirm-notification-btn" variant="contained" onClick={() => setIsOpen(false)}>
+        <Button
+          className="confirm-notification-btn"
+          variant="contained"
+          onClick={() => setIsOpen(false)}
+        >
           Cancel
         </Button>
-        <Button variant="contained" color="error">
+        <Button
+          variant="contained"
+          color="error"
+          onClick={onDelete}
+        >
           Delete
         </Button>
       </DialogActions>

@@ -24,17 +24,27 @@ const ProductsTable = () => {
   const [currentProduct, setCurrentProduct] = useState(null);
   const [products, setProducts] = useState([]);
 
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const response = await axios.get("http://localhost:3000/product");
-        setProducts(response.data);
-      } catch (error) {
-        console.log(error);
-      }
-    };
+  const onDelete = async (id) => {
+    try {
+      await axios.delete(`http://localhost:3000/product/${id}`);
+      setProducts(products.filter((product) => product.id !== id));
+      setisDeleteModalOpen(false);
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
-    fetchData();
+  const fetchProducts = async () => {
+    try {
+      const response = await axios.get("http://localhost:3000/product");
+      setProducts(response.data);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  useEffect(() => {
+    fetchProducts();
   }, []);
 
   const SortButton = (
@@ -125,7 +135,10 @@ const ProductsTable = () => {
                     </button>
                     <button
                       className="product-table-cell-button"
-                      onClick={() => setisDeleteModalOpen(true)}
+                      onClick={() => {
+                        setCurrentProduct(product);
+                        setisDeleteModalOpen(true);
+                      }}
                     >
                       <img src={TrashCanIcon} alt="Trashcan"></img>
                     </button>
@@ -140,10 +153,12 @@ const ProductsTable = () => {
           product={currentProduct}
           isOpen={isProductModalOpen}
           setIsOpen={setIsProductModalOpen}
+          fetchProducts={fetchProducts}
         />
         <ConfirmNotification
           isOpen={isDeleteModalOpen}
           setIsOpen={setisDeleteModalOpen}
+          onDelete={() => onDelete(currentProduct.id)}
         />
       </div>
     </div>

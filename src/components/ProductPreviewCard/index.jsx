@@ -13,7 +13,11 @@ import {
 const ProductPreviewCard = ({ image, title, price, quantity }) => (
   <Card className="product-card">
     <CardMedia component="img" height="194" image={image} alt="Product" />
-    <CardHeader className="product-card-title" disableTypography={true} title={title} />
+    <CardHeader
+      className="product-card-title"
+      disableTypography
+      title={title}
+    />
     <CardContent className="product-card-content">
       <div className="product-card-info">
         <div className="product-card-price">{price}</div>
@@ -22,11 +26,7 @@ const ProductPreviewCard = ({ image, title, price, quantity }) => (
     </CardContent>
     <CardActions className="product-card-actions">
       <Button className="product-card-button">
-        <img
-          src={CartImage}
-          className="product-card-button-image"
-          alt="Cart"
-          />
+        <img src={CartImage} className="product-card-button-image" alt="Cart" />
         Готовий до відправки
       </Button>
     </CardActions>
