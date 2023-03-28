@@ -20,8 +20,8 @@ const ProductPreviewCard = ({ image, title, price, quantity }) => (
     />
     <CardContent className="product-card-content">
       <div className="product-card-info">
-        <div className="product-card-price">{price}</div>
-        <div className="product-card-quantity">{quantity}</div>
+        <div className="product-card-price">{price}₴</div>
+        <div className="product-card-quantity">Кількість:{quantity}</div>
       </div>
     </CardContent>
     <CardActions className="product-card-actions">
