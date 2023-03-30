@@ -37,19 +37,6 @@ const ProductsPreview = () => {
           </Link>
         ))}
       </div>
-      <div className="product-preview-card">
-        {products.map((product) => (
-          <Link key={product.id} to={`${product.id}`}>
-            <ProductPreviewCard
-              className="product-preview-card-item"
-              image={product.image}
-              title={product.name}
-              price={product.price}
-              quantity={product.quantity}
-            />
-          </Link>
-        ))}
-      </div>
     </section>
   );
 };

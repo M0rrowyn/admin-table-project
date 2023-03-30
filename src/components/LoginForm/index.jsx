@@ -9,6 +9,7 @@ import LoginFormPassword from "../LoginFormPassword";
 const LoginForm = () => {
   const [login, setLogin] = useState("");
   const [password, setPassword] = useState("");
+  const [error, setError] = useState("");
 
   const navigate = useNavigate();
 
@@ -27,6 +28,7 @@ const LoginForm = () => {
       return navigate("/admin-table");
     } catch (error) {
       console.error(error);
+      setError("Incorrect login and password")
     }
   };
 
@@ -41,6 +43,7 @@ const LoginForm = () => {
         placeholder="Password"
         onChange={(event) => setPassword(event.target.value)}
       />
+      {error && <p style={{ color: "red" }}>{error}</p>}
       <button
         className="login-form-button"
         onClick={() => onClick(login, password)}
