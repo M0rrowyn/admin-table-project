@@ -4,13 +4,14 @@ import axios from "axios";
 import LogoIcon from "../../assets/images/admin-table/admin-table-icon.svg";
 import ProductPreviewCard from "../../components/ProductPreviewCard";
 import { Link } from "react-router-dom";
+import { BASE_URL } from "../../constants";
 
 const ProductsPreview = () => {
   const [products, setProducts] = useState([]);
 
   const fetchProducts = async () => {
     try {
-      const response = await axios.get("http://localhost:3000/product");
+      const response = await axios.get(`${BASE_URL}/product`);
       setProducts(response.data);
     } catch (error) {
       console.log(error);

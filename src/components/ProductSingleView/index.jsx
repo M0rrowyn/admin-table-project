@@ -5,6 +5,7 @@ import LogoIcon from "../../assets/images/admin-table/admin-table-icon.svg";
 import ArrowLeftIcon from "../../assets/images/products-preview/arrow-left.svg";
 import CheckArrowIcon from "../../assets/images/products-preview/check-arrow.svg";
 import { Link, useParams } from "react-router-dom";
+import { BASE_URL } from "../../constants";
 
 const ProductSingleView = () => {
   const [product, setProduct] = useState({});
@@ -12,7 +13,7 @@ const ProductSingleView = () => {
 
   useEffect(() => {
     const fetchData = async () => {
-      const response = await axios.get(`http://localhost:3000/product/${id}`);
+      const response = await axios.get(`${BASE_URL}/product/${id}`);
       setProduct(response.data);
     };
     fetchData();

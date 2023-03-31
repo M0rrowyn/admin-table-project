@@ -1,7 +1,7 @@
 import React from "react";
 import "./style.css";
 
-const FormTextarea = ({ resize, label, value, rows, onChange }) => {
+const FormTextarea = ({ resize, label, value, rows = 2, onChange }) => {
   let className = "form-textarea";
   if (resize) {
     className += " form-textarea-resizable";
@@ -15,7 +15,7 @@ const FormTextarea = ({ resize, label, value, rows, onChange }) => {
       <textarea
         className={className}
         value={value}
-        rows={rows || 2}
+        rows={rows}
         onChange={onChange}
       />
     </div>
