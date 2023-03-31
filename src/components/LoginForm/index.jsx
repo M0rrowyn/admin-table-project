@@ -26,6 +26,18 @@ const LoginForm = () => {
       localStorage.setItem("token", token);
       localStorage.setItem("user", JSON.stringify(user));
 
+      axios.interceptors.request.use(
+        (config) => {
+          if (token) {
+            config.headers.Authorization = `Bearer ${token}`;
+          }
+          return config;
+        },
+        (error) => {
+          return Promise.reject(error);
+        }
+      );
+
       return navigate("/admin-table");
     } catch (error) {
       console.error(error);
@@ -45,10 +57,7 @@ const LoginForm = () => {
         onChange={(event) => setPassword(event.target.value)}
       />
       {error && <p style={{ color: "red" }}>{error}</p>}
-      <button
-        type="submit"
-        className="login-form-button"
-      >
+      <button type="submit" className="login-form-button">
         Login
       </button>
     </form>
