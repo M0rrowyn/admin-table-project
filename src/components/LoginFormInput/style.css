@@ -1,0 +1,21 @@
+.login-form-input {
+  width: 100%;
+  padding: 20px;
+  background-color: #D9D9D9;
+  border: 1px solid #D9D9D9;
+  outline: none;
+  transition: border 0.15s ease-in-out;
+  font-family: "Inter", sans-serif;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 17px;
+}
+
+.login-form-input:focus {
+  border: 1px solid #44B26F;
+}
+
+.login-form-input::placeholder {
+  color: #44B26F;
+}

@@ -1,0 +1,28 @@
+.confirm-notification-background {
+  height: 100vh;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(0, 0, 0, 0.4);
+  position: fixed;
+  top: 0;
+  left: 0;
+  opacity: 100;
+}
+
+.confirm-notification-title {
+  font-family: 'Inter' !important;
+  font-style: normal;
+  font-weight: 700 !important;
+  line-height: 19px;
+  color: #05BC52;
+}
+
+.confirm-notification-btn {
+  background-color: #D8D5D5 !important;
+}
+
+.confirm-notification-btn:hover {
+  background-color: #e4e1e1 !important;
+}

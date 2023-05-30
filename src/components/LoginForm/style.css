@@ -1,0 +1,32 @@
+.login-form {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+}
+
+.login-form-wrapper {
+  width: 100%;
+  max-width: 500px;
+  background-color: #F5F5F5;
+  padding: 40px;
+  margin: 0 8px;
+}
+
+.login-form-logo {
+  width: 240px;
+  height: 40px;
+  align-self: center;
+}
+
+.login-form-button {
+  padding: 12px;
+  background-color: #44B26F;
+  border: none;
+  cursor: pointer;
+  font-family: "Inter", sans-serif;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 24px;
+  line-height: 29px;
+  color: #FFF;
+}

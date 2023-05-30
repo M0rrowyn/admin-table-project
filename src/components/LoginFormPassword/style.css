@@ -1,0 +1,16 @@
+.form-password-wrapper {
+  display: inline-block;
+  position: relative;
+}
+
+.form-password {
+  padding-right: 54px;
+}
+
+.password-eye {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  color: #44B26F;
+  font-size: 30px;
+}
