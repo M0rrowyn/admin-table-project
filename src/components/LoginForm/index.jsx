@@ -5,16 +5,18 @@ import { useNavigate } from "react-router-dom";
 import LogoIcon from "../../assets/images/logo/login-icon.svg";
 import LoginFormInput from "../LoginFormInput";
 import LoginFormPassword from "../LoginFormPassword";
+import { BASE_URL } from "../../constants";
 
 const LoginForm = () => {
   const [login, setLogin] = useState("");
   const [password, setPassword] = useState("");
+  const [error, setError] = useState("");
 
   const navigate = useNavigate();
 
-  const onClick = async (login, password) => {
+  const onLogin = async (login, password) => {
     try {
-      const response = await axios.post("http://localhost:3000/login", {
+      const response = await axios.post(`${BASE_URL}/login`, {
         login,
         password,
       });
@@ -24,14 +26,27 @@ const LoginForm = () => {
       localStorage.setItem("token", token);
       localStorage.setItem("user", JSON.stringify(user));
 
+      axios.interceptors.request.use(
+        (config) => {
+          if (token) {
+            config.headers.Authorization = `Bearer ${token}`;
+          }
+          return config;
+        },
+        (error) => {
+          return Promise.reject(error);
+        }
+      );
+
       return navigate("/admin-table");
     } catch (error) {
       console.error(error);
+      setError("Incorrect login and password");
     }
   };
 
   const Form = (
-    <form className="login-form" onSubmit={(event) => event.preventDefault()}>
+    <form className="login-form">
       <img src={LogoIcon} className="login-form-logo" alt="Logo"></img>
       <LoginFormInput
         placeholder="User Name"
@@ -41,16 +56,24 @@ const LoginForm = () => {
         placeholder="Password"
         onChange={(event) => setPassword(event.target.value)}
       />
-      <button
-        className="login-form-button"
-        onClick={() => onClick(login, password)}
-      >
+      {error && <p style={{ color: "red" }}>{error}</p>}
+      <button type="submit" className="login-form-button">
         Login
       </button>
     </form>
   );
 
-  return <div className="login-form-wrapper">{Form}</div>;
+  return (
+    <div
+      className="login-form-wrapper"
+      onSubmit={(event) => {
+        event.preventDefault();
+        onLogin(login, password);
+      }}
+    >
+      {Form}
+    </div>
+  );
 };
 
 export default LoginForm;

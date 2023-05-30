@@ -17,6 +17,7 @@ import AdminTableButton from "../AdminTableButton";
 import UserIcon from "../../assets/images/admin-table/user.svg";
 import PlusIcon from "../../assets/images/admin-table/plus.svg";
 import { Link } from "react-router-dom";
+import { BASE_URL } from "../../constants";
 
 const ProductsTable = () => {
   const [isProductModalOpen, setIsProductModalOpen] = useState(false);
@@ -26,7 +27,7 @@ const ProductsTable = () => {
 
   const onDelete = async (id) => {
     try {
-      await axios.delete(`http://localhost:3000/product/${id}`);
+      await axios.delete(`${BASE_URL}/product/${id}`);
       setProducts(products.filter((product) => product.id !== id));
       setisDeleteModalOpen(false);
     } catch (error) {
@@ -36,7 +37,7 @@ const ProductsTable = () => {
 
   const fetchProducts = async () => {
     try {
-      const response = await axios.get("http://localhost:3000/product");
+      const response = await axios.get(`${BASE_URL}/product`);
       setProducts(response.data);
     } catch (error) {
       console.log(error);

@@ -11,6 +11,7 @@ import { MdClear } from "react-icons/md";
 import FormInput from "../FormInput";
 import FormTextarea from "../FormTextarea";
 import axios from "axios";
+import { BASE_URL } from "../../constants";
 
 const ProductModal = ({ setIsOpen, isOpen, title, product, fetchProducts }) => {
   const [currentProduct, setCurrentProduct] = useState({});
@@ -28,14 +29,14 @@ const ProductModal = ({ setIsOpen, isOpen, title, product, fetchProducts }) => {
     });
   };
 
-  const onClick = async () => {
+  const onLogin = async () => {
     if (product?.id) {
       await axios.put(
-        `http://localhost:3000/product/${product.id}`,
+        `${BASE_URL}/product/${product.id}`,
         currentProduct
       );
     } else {
-      await axios.post("http://localhost:3000/product", currentProduct);
+      await axios.post(`${BASE_URL}/product`, currentProduct);
     }
 
     if (fetchProducts) {
@@ -104,7 +105,7 @@ const ProductModal = ({ setIsOpen, isOpen, title, product, fetchProducts }) => {
             Cancel
           </Button>
           <Button
-            onClick={onClick}
+            onClick={onLogin}
             className="product-modal-submit-button"
             variant="contained"
             color="success"
